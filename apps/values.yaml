@@ -5,5 +5,5 @@ spec:
   project: xquare-stag
 
   source:
-    repoURL: https://github.com/team-xquare/xquare-gitops-repo-staging.git
+    repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
     targetRevision: HEAD
