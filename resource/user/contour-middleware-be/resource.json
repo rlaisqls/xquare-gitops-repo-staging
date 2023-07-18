@@ -5,6 +5,6 @@
   "ImageTag": "72f68d5e076c753283039e2288991acac01fcccc",
   "ContainerPort": 9443,
   "Prefix": "",
-  "Environment": "stag",
+  "Environment": "prod",
   "Type": "be"
 }
