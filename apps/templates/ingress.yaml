@@ -1,7 +1,7 @@
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
-  name: {{ .Values.Name }}
+  name: {{ .Values.spec.project }}-ingress
 spec:
   template:
     spec:

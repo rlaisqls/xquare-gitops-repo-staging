@@ -1,5 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -9,7 +14,7 @@ spec:
     revision: HEAD
     files:
       - path: resource/{{ .Values.spec.environment }}/**/resource.json
-  
+
 template: 
   metadata:
     name: {{ .Values.Name }}
