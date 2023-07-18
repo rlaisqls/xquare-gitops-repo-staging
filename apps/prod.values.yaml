@@ -1,0 +1,63 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: xquare-prod
+  source:
+    repoURL: https://github.com/rlaisqls/xquare-gitops-repo-proding.git
+    targetRevision: HEAD
+  
+  host: prod-api.xquare.app
+  environment: prod
+
+server:
+  - name: application-be-prod
+    prefix: /applications
+    port: 8080
+  
+  - name: attachment-be-prod
+    prefix: /attachment
+    port: 8080
+
+  - name: authority-be-prod
+    prefix: /authorities
+    port: 8080
+
+  - name: backoffice-be-prod
+    prefix: /backoffice
+    port: 8080
+
+  - name: feed-be-prod
+    prefix: /feeds
+    port: 8080
+
+  - name: meal-be-prod
+    prefix: /meal
+    port: 8080
+
+  - name: notification-be-prod
+    prefix: /notifications
+    port: 8080
+
+  - name: pick-be-prod
+    prefix: /pick
+    port: 8080
+
+  - name: point-be-prod
+    prefix: /points
+    port: 8080
+
+  - name: report-be-prod
+    prefix: /reports
+    port: 8080
+
+  - name: schedule-be-prod
+    prefix: /schedules
+    port: 8080
+
+  - name: timetable-be-prod
+    prefix: /timetables
+    port: 8080
+
+  - name: user-be-prod
+    prefix: /users
+    port: 8080

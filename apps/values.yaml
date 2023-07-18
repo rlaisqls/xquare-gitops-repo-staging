@@ -1,9 +1,0 @@
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-
-  project: xquare-stag
-
-  source:
-    repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
-    targetRevision: HEAD
