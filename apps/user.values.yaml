@@ -1,0 +1,20 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: xquare-prod
+  source:
+    path: /charts/server
+    repoURL: https://github.com/rlaisqls/xquare-gitops-repo-proding.git
+    targetRevision: HEAD
+  
+  host: localhost
+  environment: user
+
+server:
+  - name: user-be-prod
+    prefix: /users
+    port: 8080
+
+  - name: authority-be-prod
+    prefix: /authorities
+    port: 8080

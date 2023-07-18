@@ -3,10 +3,11 @@ spec:
     server: https://kubernetes.default.svc
   project: xquare-prod
   source:
+    path: /charts/server
     repoURL: https://github.com/rlaisqls/xquare-gitops-repo-proding.git
     targetRevision: HEAD
   
-  host: prod-api.xquare.app
+  host: localhost
   environment: prod
 
 server:
@@ -16,10 +17,6 @@ server:
   
   - name: attachment-be-prod
     prefix: /attachment
-    port: 8080
-
-  - name: authority-be-prod
-    prefix: /authorities
     port: 8080
 
   - name: backoffice-be-prod
@@ -56,8 +53,4 @@ server:
 
   - name: timetable-be-prod
     prefix: /timetables
-    port: 8080
-
-  - name: user-be-prod
-    prefix: /users
     port: 8080
