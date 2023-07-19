@@ -1,0 +1,11 @@
+{
+  "Name": "feed",
+  "Host": "stag-api.xquare.app",
+  "ImageRegistry": "067347400935.dkr.ecr.ap-northeast-2.amazonaws.com",
+  "ImageTag": "497d160a692ed98c6bdf7876af378fae34483182",
+  "ContainerPort": 8080,
+  "Prefix": "/feeds",
+  "Environment": "stag",
+  "Type": "be",
+  "ResourcePath": "resource/stag/feed-be/resource.json"
+}

@@ -1,0 +1,24 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: xquare-prod
+  source:
+    path: /charts/server
+    repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
+    targetRevision: HEAD
+  
+  host: localhost
+  environment: prod
+
+server:
+  - name: application-be
+  - name: attachment-be
+  - name: backoffice-be
+  - name: feed-be
+  - name: meal-be
+  - name: notification-be
+  - name: pick-be
+  - name: point-be
+  - name: report-be
+  - name: schedule-be
+  - name: timetable-be
