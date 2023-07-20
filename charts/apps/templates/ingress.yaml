@@ -8,14 +8,14 @@ metadata:
 spec:
   ingressClassName: contour
   routes:
+    {{- $environment := .Values.spec.environment }}
+    {{- range $json := $.Files.Glob (printf "resource/%s/**" $environment) }}
+    {{- $jsonData := $json | toString | fromJson }}
+    {{- if ne $jsonData.Prefix "" }}
     - conditions:
-      {{- $environment := .Values.spec.environment }}
-      {{- range $json := $.Files.Glob (printf "resource/%s/**" $environment) }}
-      {{- $jsonData := $json | toString | fromJson }}
-      {{- if ne $jsonData.Prefix "" }}
       - prefix: {{ $jsonData.Prefix }}
-        services:
-          - name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
-            port: 80
-      {{- end }}
-      {{- end }}
+      services:
+        - name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
+          port: 80
+    {{- end }}
+    {{- end }}
