@@ -4,26 +4,18 @@ metadata:
   name: {{ .Values.spec.project }}-servers
 spec:
   generators:
-  - list:
-      elements:
-      - name: application-be
-        path: resource/prod/application-be/resource.json
-      - name: attachment-be
-        path: resource/prod/attachment-be/resource.json
-      - name: backoffice-be
-        path: resource/prod/backoffice-be/resource.json
-  # - git:
-  #     repopath: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
-  #     revision: HEAD
-  #     files:
-  #     - path: "resource/{{ .Values.spec.environment }}/**/resource.json"
+  - git:
+      repopath: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
+      revision: HEAD
+      files:
+      - path: "resource/{{ .Values.spec.environment }}/**/resource.json"
   template:
     metadata:
       name: '{{`{{name}}`}}'
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
-        namespace: xquare
+        namespace: argocd
       project: default
       source:
         path: {{ .Values.spec.source.path }}
