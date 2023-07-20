@@ -14,8 +14,8 @@ spec:
       {{- $jsonData := $json | toString | fromJson }}
       {{- if ne $jsonData.Prefix "" }}
       - prefix: {{ $jsonData.Prefix }}
-      services:
-        - name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
-          port: 80
+        services:
+          - name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
+            port: 80
       {{- end }}
       {{- end }}
