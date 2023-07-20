@@ -9,8 +9,6 @@ metadata:
     environment: {{ .Values.environment }}
 spec:
   type: ClusterIP
-  nodeSelector:
-    environment: {{ .Values.environment }}
   selector:
     app: {{ $fullname }}
   ports:
