@@ -1,0 +1,10 @@
+config:
+  Name: notificaiton
+  Host: stag-api.xquare.app
+  ImageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  ImageTag: 78eadb303966eccbcc3761e8bd1627c43d862c33
+  ContainerPort: 8080
+  Prefix: "/notifications"
+  Environment: stag
+  Type: be
+  ResourcePath: resource/stag/notification-be/resource.json

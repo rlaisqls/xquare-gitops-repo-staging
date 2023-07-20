@@ -1,0 +1,10 @@
+config:
+  Name: backoffice
+  Host: stag-api.xquare.app
+  ImageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  ImageTag: 5c82b545e23570de0e25d00bd94e9aa99aa9fc6c
+  ContainerPort: 8080
+  Prefix: "/"
+  Environment: stag
+  Type: be
+  ResourcePath: resource/stag/backoffice-be/resource.json

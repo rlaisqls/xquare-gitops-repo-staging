@@ -1,0 +1,10 @@
+config:
+  Name: authority
+  Host: prod-api.xquare.app
+  ImageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  ImageTag: 2fef781823533b8963ca2c8fa78ae547e130215e
+  ContainerPort: 8080
+  Prefix: "/authorities"
+  Environment: user
+  Type: be
+  ResourcePath: resource/user/authority-be/resource.json
