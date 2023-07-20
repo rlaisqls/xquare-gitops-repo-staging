@@ -23,8 +23,8 @@ spec:
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
-        namespace: xquare
-      project: {{ .Values.spec.project }}
+        namespace: argocd
+      project: default
       source:
         path: {{ .Values.spec.source.path }}
         repoURL: {{ .Values.spec.source.repoURL }}
