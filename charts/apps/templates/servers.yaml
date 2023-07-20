@@ -24,8 +24,7 @@ spec:
         repoURL: {{ .Values.spec.source.repoURL }}
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
-          values: |
-            {{ toYaml config }}
+          values: {{ toYaml '{{`{{ config }}`}}' }}
       syncPolicy:
         automated:
           prune: true
