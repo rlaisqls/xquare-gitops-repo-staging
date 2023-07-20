@@ -19,7 +19,7 @@ spec:
   #     - path: "resource/{{ .Values.spec.environment }}/**/resource.json"
   template:
     metadata:
-      name: '{{ name }}'
+      name: '{{ .name }}'
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
@@ -27,11 +27,11 @@ spec:
       project: {{ .Values.spec.project }}
       source:
         path: {{ .Values.spec.source.path }}
-        repopath: {{ .Values.spec.source.repopath }}
+        repoURL: {{ .Values.spec.source.repoURL }}
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
           valueFiles:
-            - '{{ path }}'
+            - '{{ .path }}'
       syncPolicy:
         automated:
           prune: true
