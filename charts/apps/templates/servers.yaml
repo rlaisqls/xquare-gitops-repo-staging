@@ -25,7 +25,7 @@ spec:
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
           values: |
-            {{ toYaml {{`{{ config }}`}} }}
+            {{ toYaml config }}
       syncPolicy:
         automated:
           prune: true
