@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) -}}
+{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
 metadata:
   name: {{ $fullname }}
   labels:
