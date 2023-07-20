@@ -44,7 +44,7 @@ spec:
                 )
               )
             }}
-            {{- $myMap | toYaml | nindent 10 }}
+            {{- $myMap | toYaml | nindent 12 | toString }}
       syncPolicy:
         automated:
           prune: true
