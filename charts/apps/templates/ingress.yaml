@@ -11,7 +11,7 @@ spec:
     {{- $environment := .Values.spec.environment }}
     {{- range $json := $.Files.Glob (printf "resource/%s/**" $environment) }}
     {{- $jsonData := $json | toString | fromJson }}
-    {{- if ne $jsonData.Prefix "" }}
+    {{- if ne $jsonData.config.Prefix "" }}
     - conditions:
       - prefix: {{ $jsonData.config.Prefix }}
       services:
