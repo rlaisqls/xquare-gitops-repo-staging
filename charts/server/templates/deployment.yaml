@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 {{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
 metadata:
-  name: {{ $fullname }}
+  name: {{ $fullname }}-deployment
   labels:
     app: {{ .Values.name }}
     type: {{ .Values.type }}
@@ -13,6 +13,9 @@ spec:
     matchLabels:
       app: {{ $fullname }}
   template:
+    metadata:
+      labels:
+        app: {{ $fullname }}
     spec:
       nodeSelector:
         environment: {{ .Values.environment }}
