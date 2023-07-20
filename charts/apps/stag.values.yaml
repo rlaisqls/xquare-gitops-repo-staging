@@ -1,7 +1,7 @@
 spec:
   destination:
     server: https://kubernetes.default.svc
-  project: xquare-stag
+  project: xquare
   source:
     path: charts/server
     repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
