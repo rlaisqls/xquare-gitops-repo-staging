@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: {{ $fullname }}-service
   labels:
-    app: {{ .Values.name }}
+    project: {{ .Values.name }}
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:

@@ -4,7 +4,8 @@ kind: Deployment
 metadata:
   name: {{ $fullname }}-deployment
   labels:
-    app: {{ .Values.name }}
+    app: {{ $fullname }}
+    project: {{ .Values.name }}
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:
