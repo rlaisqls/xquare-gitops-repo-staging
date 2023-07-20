@@ -25,7 +25,7 @@ spec:
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
           values: |
-            {{`{{values}}`}}
+            {{`{{app_values}}`}}
       syncPolicy:
         automated:
           prune: true
