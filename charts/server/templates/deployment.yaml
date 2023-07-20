@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
+{{- $fullname := printf "%s-%s-%s" .Values.Name .Values.Type .Values.Environment -}}
 metadata:
-  name: {{ .Values.Name }}
+  name: {{ $fullname }}
   labels:
-    app: {{ .Values.Name }}
+    app: {{ $fullname }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.Name }}
+      app: {{ $fullname }}
   template:
     metadata:
       labels:
-        app: {{ .Values.Name }}
+        app: {{ $fullname }}
     spec:
       nodeSelector:
-        environment: {{ .Values.spec.environment }}
+        environment: {{ .Values.Environment }}
     spec:
       containers:
-        - name:  {{ .Values.Name }}
+        - name:  {{ $fullname }}
           image: {{ .Values.ImageRegistry }}/{{ .Values.Name }}-{{ .Values.Type }}:{{ .Values.ImageTag }}
           imagePullPolicy: Always
           ports:
