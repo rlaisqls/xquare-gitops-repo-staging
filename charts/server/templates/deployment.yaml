@@ -26,5 +26,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.containerPort }}
-          imagePullSecrets:
-            - name: ecr

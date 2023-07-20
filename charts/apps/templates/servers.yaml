@@ -13,6 +13,10 @@ spec:
   template:
     metadata:
       name: '{{`{{ config.name }}`}}-{{`{{ config.type }}`}}-{{`{{ config.environment }}`}}'
+      labels:
+        project: {{ config.name }}
+        type: {{ config.type }}
+        environment: {{ config.environment }}
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}

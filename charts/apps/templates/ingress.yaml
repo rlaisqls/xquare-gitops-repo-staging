@@ -4,6 +4,8 @@ metadata:
   name: {{ .Values.spec.project }}-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingresstest
+    labels:
+      project: {{ .Values.spec.project }}
   namespace: xquare
 spec:
   ingressClassName: contour
