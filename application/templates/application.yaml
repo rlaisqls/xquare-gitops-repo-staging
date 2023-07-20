@@ -33,7 +33,7 @@ spec:
           valueFiles:
             - '{{`{{ environment }}`}}.values.yaml'
           values: |
-            {{- $myMap :=
+            {{- $map :=
               (dict "spec"
                 (dict
                 "project" $project
@@ -44,7 +44,7 @@ spec:
                 )
               )
             }}
-            {{- $myMap | toYaml | nindent 12 | toString }}
+            {{- $map | toYaml | nindent 12 | toString }}
       syncPolicy:
         automated:
           prune: true

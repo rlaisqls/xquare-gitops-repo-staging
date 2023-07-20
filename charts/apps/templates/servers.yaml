@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: '{{ .Values.spec.project }}-servers'
+  name: '{{ .Values.spec.project }}-{{ .Values.spec.environment }}-servers'
   namespace: argocd
 spec:
   generators:
