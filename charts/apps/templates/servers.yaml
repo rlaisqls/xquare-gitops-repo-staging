@@ -18,14 +18,14 @@ spec:
         server: {{ .Values.spec.destination.server }}
         namespace: xquare
       project: {{ .Values.spec.project }}
-      source:
-        path: {{ .Values.spec.source.path }}
-        repoURL: {{ .Values.spec.source.repoURL }}
-        targetRevision: {{ .Values.spec.source.targetRevision }}
-        ref: this
-        helm:
-          valueFiles:
-            - '$this/{{`{{ResourcePath}}`}}'
+      sources:
+        - repoURL: {{ .Values.spec.source.repoURL }}
+          targetRevision: {{ .Values.spec.source.targetRevision }}
+          path: {{ .Values.spec.source.path }}
+          ref: this
+          helm:
+            valueFiles:
+              - '$this/{{`{{ResourcePath}}`}}'
 
       syncPolicy:
         automated:
