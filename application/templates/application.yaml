@@ -32,15 +32,19 @@ spec:
         helm:
           valueFiles:
             - '{{`{{ environment }}`}}.values.yaml'
-          values: 
-            spec: |
-              project: {{ $project }}
-              destination:
-                server: {{ $destination }}
-              source:
-                serverPath: charts/server
-                repoURL: {{ $repository }}
-                targetRevision: HEAD
+        values: |
+            {{- $myMap :=
+              (dict "spec"
+                (dict
+                "project" $project
+                "destination"
+                  (dict "server" $destination)
+                "source"
+                  (dict "serverPath" "charts/server" "repoURL" $repository "targetRevision" "HEAD") 
+                )
+              )
+            }}
+            {{- $myMap | toYaml | nindent 10 }}
       syncPolicy:
         automated:
           prune: true
