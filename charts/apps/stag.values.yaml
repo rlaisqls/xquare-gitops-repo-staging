@@ -9,18 +9,3 @@ spec:
   
   host: localhost
   environment: stag
-
-server:
-  - name: application-be
-  - name: attachment-be
-  - name: authority-be
-  - name: backoffice-be
-  - name: feed-be
-  - name: meal-be
-  - name: notification-be
-  - name: pick-be
-  - name: point-be
-  - name: report-be
-  - name: schedule-be
-  - name: timetable-be
-  - name: user-be

@@ -9,7 +9,3 @@ spec:
   
   host: localhost
   environment: user
-
-server:
-  - name: user-be
-  - name: authority-be

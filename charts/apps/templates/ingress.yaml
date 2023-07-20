@@ -11,14 +11,13 @@ spec:
   - http:
       paths:
       {{- $environment := .Values.spec.environment }}
-      {{- range .Values.server }}
-      {{- $jsonData := $.Files.Get (printf "resource/%s/%s/resource.json" $environment .name) | fromJson -}}
-      {{- printf "\n"}}
+      {{- range $json := $.Files.Glob (printf "resource/%s/**" $environment) }}
+      {{- $jsonData := $json | toString | fromJson }}
       - path: {{ $jsonData.Prefix }}
         pathType: Prefix
         backend:
           service:
-            name: {{ .name }}-{{ $jsonData.Environment }}
+            name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
             port:
               number: 80
       {{- end }}
