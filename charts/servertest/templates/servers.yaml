@@ -23,7 +23,7 @@ spec:
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
-        namespace: argocd
+        namespace: xquare
       project: default
       source:
         path: {{ .Values.spec.source.path }}
