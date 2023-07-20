@@ -25,4 +25,4 @@ spec:
         path: '{{`{{path}}`}}'
       destination:
         server: https://api.cluster1.chx.osecloud.com:6443
-        namespace: pricelist
+        namespace: xquare
