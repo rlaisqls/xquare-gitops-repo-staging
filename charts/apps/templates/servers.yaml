@@ -10,6 +10,10 @@ spec:
       revision: HEAD
       files:
       - path: "resource/{{ .Values.spec.environment }}/**/resource.json"
+  sources:
+    - repoURL: {{ .Values.spec.source.path }}
+      targetRevision: HEAD
+      ref: this
   template:
     metadata:
       name: '{{`{{Name}}`}}-{{`{{Type}}`}}-{{`{{Environment}}`}}'
@@ -18,14 +22,13 @@ spec:
         server: {{ .Values.spec.destination.server }}
         namespace: xquare
       project: {{ .Values.spec.project }}
-      sources:
-        - repoURL: {{ .Values.spec.source.repoURL }}
-          targetRevision: {{ .Values.spec.source.targetRevision }}
-          path: {{ .Values.spec.source.path }}
-          ref: this
-          helm:
-            valueFiles:
-              - '$this/{{`{{ResourcePath}}`}}'
+      source:
+        path: {{ .Values.spec.source.path }}
+        repoURL: {{ .Values.spec.source.repoURL }}
+        targetRevision: {{ .Values.spec.source.targetRevision }}
+        helm:
+          valueFiles:
+            - '$this/{{`{{ResourcePath}}`}}'
 
       syncPolicy:
         automated:
