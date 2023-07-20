@@ -4,14 +4,22 @@ metadata:
   name: {{ .Values.spec.project }}-servers
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
-      revision: HEAD
-      files:
-      - path: "resource/{{ .Values.spec.environment }}/application-be/resource.json"
+  - list:
+      items:
+      - name: application-be
+        path: resource/prod/application-be/resource.json
+      - name: attachment-be
+        path: resource/prod/attachment-be/resource.json
+      - name: backoffice-be
+        path: resource/prod/backoffice-be/resource.json
+  # - git:
+  #     repopath: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
+  #     revision: HEAD
+  #     files:
+  #     - path: "resource/{{ .Values.spec.environment }}/**/resource.json"
   template:
     metadata:
-      name: '{{ .Name }}'
+      name: '{{ name }}'
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
@@ -19,7 +27,7 @@ spec:
       project: {{ .Values.spec.project }}
       source:
         path: {{ .Values.spec.source.path }}
-        repoURL: {{ .Values.spec.source.repoURL }}
+        repopath: {{ .Values.spec.source.repopath }}
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
           valueFiles:
