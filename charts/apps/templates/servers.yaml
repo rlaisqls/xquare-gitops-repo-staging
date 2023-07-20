@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
       revision: HEAD
       files:
-      - path: "charts/apps/resource/{{ .Values.spec.environment }}/**/resource.yaml"
+      - path: "charts/apps/resource/{{ .Values.spec.environment }}/**/resource.json"
   template:
     metadata:
       name: '{{`{{ config.name }}`}}-{{`{{ config.type }}`}}-{{`{{ config.environment }}`}}'
