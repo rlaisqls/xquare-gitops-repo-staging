@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: pricelist
-  namespace: openshift-gitops
+  namespace: xquare
 spec:
   generators:
   - git:
