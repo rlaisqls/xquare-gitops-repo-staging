@@ -1,6 +1,7 @@
+{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
+
 apiVersion: apps/v1
 kind: Deployment
-{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
 metadata:
   name: {{ $fullname }}-deployment
   labels:

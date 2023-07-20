@@ -1,6 +1,7 @@
+{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
+
 apiVersion: v1
 kind: Service
-{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
 metadata:
   name: {{ $fullname }}-service
   labels:

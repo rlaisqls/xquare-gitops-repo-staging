@@ -1,8 +1,7 @@
-
-{{ $destination := https://kubernetes.default.svc }}
-{{ $repository := https://github.com/rlaisqls/xquare-gitops-repo-staging.git }}
-{{ $project := xquare }}
-{{ $namespace := xquare }}
+{{- $destination := "https://kubernetes.default.svc" }}
+{{- $repository := "https://github.com/rlaisqls/xquare-gitops-repo-staging.git" }}
+{{- $project := "xquare" }}
+{{- $namespace := "xquare" }}
 
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -33,7 +32,7 @@ spec:
         helm:
           valueFiles:
             - '{{`{{ environment }}`}}.values.yaml'
-          values: |-
+          values: 
             spec:
               project: {{ $project }}
               destination:
