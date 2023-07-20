@@ -32,7 +32,7 @@ spec:
         helm:
           valueFiles:
             - '{{`{{ environment }}`}}.values.yaml'
-        values: |
+          values: |
             {{- $myMap :=
               (dict "spec"
                 (dict
