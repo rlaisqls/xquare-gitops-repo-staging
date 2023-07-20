@@ -6,8 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
-      revision: HEAD
+      repoURL: {{ .Values.spec.source.repoURL }}
       files:
       - path: "charts/apps/resource/{{ .Values.spec.environment }}/**/resource.yaml"
   template:
@@ -18,12 +17,12 @@ spec:
         type: '{{`{{ config.type }}`}}'
         environment: '{{`{{ config.environment }}`}}'
     spec:
+      project: {{ .Values.spec.project }}
       destination:
         server: {{ .Values.spec.destination.server }}
-        namespace: xquare
-      project: {{ .Values.spec.project }}
+        namespace: {{ .Values.spec.namespace }}
       source:
-        path: {{ .Values.spec.source.path }}
+        path: {{ .Values.spec.source.server-path }}
         repoURL: {{ .Values.spec.source.repoURL }}
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
@@ -36,10 +35,3 @@ spec:
             prefix: '{{`{{ config.prefix }}`}}'
             environment: '{{`{{ config.environment }}`}}'
             type: '{{`{{ config.type }}`}}'
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - Createnamespace=true
-        - "--creds=argocd-ecr-secret"

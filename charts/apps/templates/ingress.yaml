@@ -1,12 +1,12 @@
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
-  name: {{ .Values.spec.project }}-ingress
+  name: {{ .Values.spec.project }}-{{ .Values.spec.environment }}-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingresstest
     labels:
       project: {{ .Values.spec.project }}
-  namespace: xquare
+  namespace: {{ .Values.spec.namespace }}
 spec:
   ingressClassName: contour
   routes:

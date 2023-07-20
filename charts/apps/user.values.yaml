@@ -1,11 +1,4 @@
 spec:
-  destination:
-    server: https://kubernetes.default.svc
-  project: xquare
-  source:
-    path: charts/server
-    repoURL: https://github.com/rlaisqls/xquare-gitops-repo-staging.git
-    targetRevision: HEAD
-  
+  namespace: xquare
   host: localhost
   environment: user

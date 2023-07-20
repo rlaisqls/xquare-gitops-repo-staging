@@ -1,0 +1,51 @@
+
+{{ $destination := https://kubernetes.default.svc }}
+{{ $repository := https://github.com/rlaisqls/xquare-gitops-repo-staging.git }}
+{{ $project := xquare }}
+{{ $namespace := xquare }}
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: xquare
+  namespace: argocd
+spec:
+  generators:
+  - list:
+    elements: 
+      - environment: prod
+      - environment: stag
+      - environment: user
+  template:
+    metadata:
+      name: 'xquare-{{`{{ environment }}`}}'
+      labels:
+        environment: '{{`{{ environment }}`}}'
+    spec:
+      project: {{ $project }}
+      destination:
+        server: {{ $destination }}
+        namespace: {{ $namespace }}
+      source:
+        path: charts/apps
+        repoURL: {{ $repository }}
+        targetRevision: HEAD
+        helm:
+          valueFiles:
+            - '{{`{{ environment }}`}}.values.yaml'
+          values: |-
+            spec:
+              project: {{ $project }}
+              destination:
+                server: {{ $destination }}
+              source:
+                server-path: charts/server
+                repoURL: {{ $repository }}
+                targetRevision: HEAD
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - Createnamespace=true
+        - "--creds=argocd-ecr-secret"
