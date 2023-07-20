@@ -12,11 +12,11 @@ metadata:
     layer: applications
 spec:
   generators:
-  - list:
-      elements: 
-        - environment: prod
-        - environment: stag
-        - environment: user
+    - list:
+        elements: 
+          - environment: prod
+          - environment: stag
+          - environment: user
   template:
     metadata:
       name: 'xquare-{{`{{ environment }}`}}'

@@ -10,6 +10,8 @@ spec:
       revision: HEAD
       files:
       - path: "charts/apps/resource/{{ .Values.spec.environment }}/**/resource.yaml"
+  imagePullSecret:
+    - name: ecr-credentials
   template:
     metadata:
       name: '{{`{{ config.name }}`}}-{{`{{ config.type }}`}}-{{`{{ config.environment }}`}}'
