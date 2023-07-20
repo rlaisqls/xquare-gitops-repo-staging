@@ -1,10 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
-{{- $fullname := printf "%s-%s-%s" .Values.Name .Values.Type .Values.Environment -}}
+{{- $fullname := printf "%s-%s-%s" .Values.name .Values.type .Values.environment -}}
 metadata:
   name: {{ $fullname }}
   labels:
-    app: {{ $fullname }}
+    app: {{ .Values.name }}
+    type: {{ .Values.type }}
+    environment: {{ .Values.environment }}
 spec:
   replicas: 1
   selector:
@@ -16,11 +18,11 @@ spec:
         app: {{ $fullname }}
     spec:
       nodeSelector:
-        environment: {{ .Values.Environment }}
+        environment: {{ .Values.environment }}
     spec:
       containers:
         - name:  {{ $fullname }}
-          image: {{ .Values.ImageRegistry }}/{{ .Values.Name }}-{{ .Values.Type }}:{{ .Values.ImageTag }}
+          image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}:{{ .Values.imageTag }}
           imagePullPolicy: Always
           ports:
-            - containerPort: {{ .Values.ContainerPort }}
+            - containerPort: {{ .Values.containerPort }}

@@ -1,4 +1,3 @@
-# https://github.com/argoproj/applicationset/issues/553
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -13,7 +12,7 @@ spec:
       - path: "charts/apps/resource/{{ .Values.spec.environment }}/**/resource.yaml"
   template:
     metadata:
-      name: '{{`{{ config.Name }}`}}-{{`{{ config.Type }}`}}-{{`{{ config.Environment }}`}}'
+      name: '{{`{{ config.name }}`}}-{{`{{ config.type }}`}}-{{`{{ config.environment }}`}}'
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
@@ -24,11 +23,18 @@ spec:
         repoURL: {{ .Values.spec.source.repoURL }}
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
-          values: |
-            '{{`{{ config }}`}}'
+          values: |-
+            name: '{{`{{ config.name }}`}}'
+            host: '{{`{{ config.host }}`}}'
+            imageRegistry: '{{`{{ config.imageRegistry }}`}}'
+            imageTag: '{{`{{ config.imageTag }}`}}'
+            containerPort: '{{`{{ config.containerPort }}`}}'
+            prefix: '{{`{{ config.prefix }}`}}'
+            environment: '{{`{{ config.environment }}`}}'
+            type: '{{`{{ config.type }}`}}'
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
-        - CreateNamespace=true
+        - Createnamespace=true

@@ -12,14 +12,13 @@ jobs:
       - name: Update Version In Checked-Out Code
         if: ${{ github.event.client_payload.version }}
         run: |
-          sed -i "s@\(.*version:\).*@\1 ${{ github.event.client_payload.version }}@" ${GITHUB_WORKSPACE}/charts/${{github.event.client_payload.service_type}}/${{github.event.client_payload.service_name}}/values.yaml
-          sed -i "s@\(.*\"ImageTag\":\).*@\1 \"${{ github.event.client_payload.version }}\",@" ${GITHUB_WORKSPACE}/resource/app-${{github.event.client_payload.service_name}}-${{github.event.client_payload.service_type}}.json
+          sed -i "s@\(.*\"imageTag\":\).*@\1 \"${{ github.event.client_payload.version }}\",@" ${GITHUB_WORKSPACE}/charts/apps/resource/${{github.event.client_payload.environment}}/${{github.event.client_payload.service_name}}-${{github.event.client_payload.service_type}}/resource.yaml
       
       - name: Commit The New Image Reference
         uses: stefanzweifel/git-auto-commit-action@v4
         if: ${{ github.event.client_payload.version }}
         with:
-          commit_message: "🚀 :: ${{github.event.client_payload.service_name}}-${{github.event.client_payload.service_type}}: Deploy new image ${{ github.event.client_payload.version }}"
+          commit_message: "🚀 :: ${{github.event.client_payload.service_name}}-${{github.event.client_payload.service_type}}-${{github.event.client_payload.environment}}: Deploy new image ${{ github.event.client_payload.version }}"
           branch: master
           commit_options: '--no-verify --signoff'
           repository: .

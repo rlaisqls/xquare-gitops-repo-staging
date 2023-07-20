@@ -9,13 +9,13 @@ spec:
   ingressClassName: contour
   routes:
     {{- $environment := .Values.spec.environment }}
-    {{- range $json := $.Files.Glob (printf "resource/%s/**" $environment) }}
-    {{- $jsonData := $json | toString | fromJson }}
-    {{- if ne $jsonData.config.Prefix "" }}
+    {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
+    {{- $yamlData := $file | toString | fromYaml }}
+    {{- if ne $yamlData.config.prefix "" }}
     - conditions:
-      - prefix: {{ $jsonData.config.Prefix }}
+      - prefix: {{ $yamlData.config.prefix }}
       services:
-        - name: {{ $jsonData.config.Name }}-{{ $jsonData.config.Type }}-{{ $jsonData.config.Environment }}
+        - name: {{ $yamlData.config.name }}-{{ $yamlData.config.type }}-{{ $yamlData.config.environment }}
           port: 80
     {{- end }}
     {{- end }}

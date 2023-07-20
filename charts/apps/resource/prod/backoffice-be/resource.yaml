@@ -1,10 +1,9 @@
 config:
-  Name: backoffice
-  Host: prod-api.xquare.app
-  ImageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
-  ImageTag: 5c82b545e23570de0e25d00bd94e9aa99aa9fc6c
-  ContainerPort: 8080
-  Prefix: "/"
-  Environment: prod
-  Type: be
-  ResourcePath: resource/prod/backoffice-be/resource.json
+  name: backoffice
+  host: prod-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 5c82b545e23570de0e25d00bd94e9aa99aa9fc6c
+  containerPort: 8080
+  prefix: "/"
+  environment: prod
+  type: be

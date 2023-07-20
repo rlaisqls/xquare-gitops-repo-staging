@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
-{{- $fullname := printf "%s-%s-%s" .Values.Name .Values.Type .Values.Environment -}}
+{{- $fullname := printf "%s-%s-%s" .Values.name .Values.type .Values.environment -}}
 metadata:
   name: {{ $fullname }}
   labels:
-    app: {{ .Values.Name }}
-    type: {{ .Values.Type }}
+    app: {{ .Values.name }}
+    type: {{ .Values.type }}
+    environment: {{ .Values.environment }}
 spec:
   type: ClusterIP
   selector:
@@ -13,9 +14,9 @@ spec:
   template:
     spec:
       nodeSelector:
-        environment: {{ .Values.Environment }}
+        environment: {{ .Values.environment }}
   ports:
     - name: http
       port: 80
-      targetPort: {{ .Values.ContainerPort }}
+      targetPort: {{ .Values.containerPort }}
       protocol: TCP
