@@ -11,7 +11,7 @@ spec:
       - path: "resource/{{ .Values.spec.environment }}/application-be/resource.json"
   template:
     metadata:
-      name: '{{ .Name }}'
+      name: '{{ Name }}'
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
@@ -23,7 +23,7 @@ spec:
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
           valueFiles:
-            - '{{ .ResourcePath }}'
+            - '{{ ResourcePath }}'
       syncPolicy:
         automated:
           prune: true
