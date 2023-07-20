@@ -9,7 +9,6 @@ metadata:
     environment: {{ .Values.environment }}
 spec:
   type: ClusterIP
-  replicas: 1
   nodeSelector:
     environment: {{ .Values.environment }}
   selector:
