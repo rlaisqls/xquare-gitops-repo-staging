@@ -15,7 +15,7 @@ spec:
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
-        namespace: xquare
+        namespace: argocd
       project: {{ .Values.spec.project }}
       source:
         path: {{ .Values.spec.source.path }}
