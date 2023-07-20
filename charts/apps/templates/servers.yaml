@@ -1,3 +1,4 @@
+# https://github.com/argoproj/applicationset/issues/553
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -10,10 +11,6 @@ spec:
       revision: HEAD
       files:
       - path: "resource/{{ .Values.spec.environment }}/**/resource.json"
-  sources:
-    - repoURL: {{ .Values.spec.source.path }}
-      targetRevision: HEAD
-      ref: this
   template:
     metadata:
       name: '{{`{{Name}}`}}-{{`{{Type}}`}}-{{`{{Environment}}`}}'
@@ -27,9 +24,8 @@ spec:
         repoURL: {{ .Values.spec.source.repoURL }}
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
-          valueFiles:
-            - '$this/{{`{{ResourcePath}}`}}'
-
+          values: |
+            '{{`{{values}}`}}'
       syncPolicy:
         automated:
           prune: true

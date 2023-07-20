@@ -1,25 +1,21 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
 metadata:
   name: {{ .Values.spec.project }}-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingresstest
   namespace: xquare
 spec:
-  ingressClassName: nginx
-  rules:
-  - http:
-      paths:
+  ingressClassName: contour
+  routes:
+    - conditions:
       {{- $environment := .Values.spec.environment }}
       {{- range $json := $.Files.Glob (printf "resource/%s/**" $environment) }}
       {{- $jsonData := $json | toString | fromJson }}
       {{- if ne $jsonData.Prefix "" }}
-      - path: {{ $jsonData.Prefix }}
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
-            port:
-              number: 80
+      - prefix: {{ $jsonData.Prefix }}
+      services:
+        - name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
+          port: 80
       {{- end }}
       {{- end }}
