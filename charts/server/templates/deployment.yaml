@@ -13,13 +13,9 @@ spec:
     matchLabels:
       app: {{ $fullname }}
   template:
-    metadata:
-      labels:
-        app: {{ $fullname }}
     spec:
       nodeSelector:
         environment: {{ .Values.environment }}
-    spec:
       containers:
         - name:  {{ $fullname }}
           image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}:{{ .Values.imageTag }}

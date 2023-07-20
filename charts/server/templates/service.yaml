@@ -9,12 +9,11 @@ metadata:
     environment: {{ .Values.environment }}
 spec:
   type: ClusterIP
+  replicas: 1
+  nodeSelector:
+    environment: {{ .Values.environment }}
   selector:
     app: {{ $fullname }}
-  template:
-    spec:
-      nodeSelector:
-        environment: {{ .Values.environment }}
   ports:
     - name: http
       port: 80
