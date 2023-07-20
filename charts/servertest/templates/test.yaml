@@ -1,21 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: bgd
+  name: pricelist
   namespace: openshift-gitops
 spec:
   generators:
-  - list:
-      elements:
-      - cluster: cluster1
-        url: 'https://api.cluster1.chx.osecloud.com:6443'
-     - cluster: cluster2
-        url: 'https://api.cluster2.chx.osecloud.com:6443'
-      - cluster: cluster3
-        url: 'https://api.cluster3.chx.osecloud.com:6443'
+  - git:
+      repoURL: https://github.com/christianh814/gitops-examples
+      revision: master
+      directories:
+      - path: applicationsets/git-dir-generator/apps/*
   template:
     metadata:
-      name: '{{`{{path}}`}}-bgd'
+      name: '{{`{{path.basename}}`}}'
     spec:
       project: default
       syncPolicy:
@@ -25,7 +22,7 @@ spec:
       source:
         repoURL: https://github.com/christianh814/gitops-examples
         targetRevision: master
-        path: 'applicationsets/list-generator/overlays/{{`{{path}}`}}'
+        path: '{{`{{path}}`}}'
       destination:
-        server: '{{`{{url}}`}}'
-        namespace: bgd
+        server: https://api.cluster1.chx.osecloud.com:6443
+        namespace: pricelist
