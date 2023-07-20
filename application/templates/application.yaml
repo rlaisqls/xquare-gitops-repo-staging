@@ -6,15 +6,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: xquare
+  name: xquare-applications
   namespace: argocd
 spec:
   generators:
   - list:
-    elements: 
-      - environment: prod
-      - environment: stag
-      - environment: user
+      elements: 
+        - environment: prod
+        - environment: stag
+        - environment: user
   template:
     metadata:
       name: 'xquare-{{`{{ environment }}`}}'
@@ -33,7 +33,7 @@ spec:
           valueFiles:
             - '{{`{{ environment }}`}}.values.yaml'
           values: 
-            spec:
+            spec: |
               project: {{ $project }}
               destination:
                 server: {{ $destination }}
