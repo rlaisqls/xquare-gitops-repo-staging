@@ -13,6 +13,7 @@ spec:
       {{- $environment := .Values.spec.environment }}
       {{- range $json := $.Files.Glob (printf "resource/%s/**" $environment) }}
       {{- $jsonData := $json | toString | fromJson }}
+      {{- if not $jsonData.Prefix }}
       - path: {{ $jsonData.Prefix }}
         pathType: Prefix
         backend:
@@ -20,4 +21,5 @@ spec:
             name: {{ $jsonData.Name }}-{{ $jsonData.Type }}-{{ $jsonData.Environment }}
             port:
               number: 80
+      {{- end }}
       {{- end }}
