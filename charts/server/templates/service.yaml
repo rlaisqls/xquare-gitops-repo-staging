@@ -4,7 +4,8 @@ kind: Service
 metadata:
   name: {{ $fullname }}
   labels:
-    app: {{ $fullname }}
+    app: {{ .Values.Name }}
+    type: {{ .Values.Type }}
 spec:
   type: ClusterIP
   selector:
