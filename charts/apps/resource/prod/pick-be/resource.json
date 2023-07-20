@@ -1,4 +1,5 @@
 {
+  "config": {
     "Name": "pick",
     "Host": "prod-api.xquare.app",
     "ImageRegistry": "067347400935.dkr.ecr.ap-northeast-2.amazonaws.com",
@@ -9,3 +10,4 @@
     "Type": "be",
     "ResourcePath": "resource/prod/pick-be/resource.json"
   }
+}

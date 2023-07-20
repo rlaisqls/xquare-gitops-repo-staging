@@ -1,11 +1,13 @@
 {
-  "Name": "schedule",
-  "Host": "prod-api.xquare.app",
-  "ImageRegistry": "067347400935.dkr.ecr.ap-northeast-2.amazonaws.com",
-  "ImageTag": "b5fc14362fecd1a3994e539625ab933347892b00",
-  "ContainerPort": 8080,
-  "Prefix": "/schedules",
-  "Environment": "prod",
-  "Type": "be",
-  "ResourcePath": "resource/prod/schedule-be/resource.json"
+  "config": {
+    "Name": "schedule",
+    "Host": "prod-api.xquare.app",
+    "ImageRegistry": "067347400935.dkr.ecr.ap-northeast-2.amazonaws.com",
+    "ImageTag": "b5fc14362fecd1a3994e539625ab933347892b00",
+    "ContainerPort": 8080,
+    "Prefix": "/schedules",
+    "Environment": "prod",
+    "Type": "be",
+    "ResourcePath": "resource/prod/schedule-be/resource.json"
+  }
 }

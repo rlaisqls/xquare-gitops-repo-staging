@@ -1,11 +1,13 @@
 {
-  "Name": "feed",
-  "Host": "prod-api.xquare.app",
-  "ImageRegistry": "067347400935.dkr.ecr.ap-northeast-2.amazonaws.com",
-  "ImageTag": "497d160a692ed98c6bdf7876af378fae34483182",
-  "ContainerPort": 8080,
-  "Prefix": "/feeds",
-  "Environment": "prod",
-  "Type": "be",
-  "ResourcePath": "resource/prod/feed-be/resource.json"
+  "config": {
+    "Name": "feed",
+    "Host": "prod-api.xquare.app",
+    "ImageRegistry": "067347400935.dkr.ecr.ap-northeast-2.amazonaws.com",
+    "ImageTag": "497d160a692ed98c6bdf7876af378fae34483182",
+    "ContainerPort": 8080,
+    "Prefix": "/feeds",
+    "Environment": "prod",
+    "Type": "be",
+    "ResourcePath": "resource/prod/feed-be/resource.json"
+  }
 }

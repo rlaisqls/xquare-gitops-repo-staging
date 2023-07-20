@@ -13,7 +13,7 @@ spec:
       - path: "resource/{{ .Values.spec.environment }}/**/resource.json"
   template:
     metadata:
-      name: '{{`{{Name}}`}}-{{`{{Type}}`}}-{{`{{Environment}}`}}'
+      name: '{{`{{ config.Name }}`}}-{{`{{ config.Type }}`}}-{{`{{ config.Environment }}`}}'
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
@@ -25,7 +25,7 @@ spec:
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
           values: |
-            {{`{{app_values}}`}}
+            {{`{{ config }}`}}
       syncPolicy:
         automated:
           prune: true
