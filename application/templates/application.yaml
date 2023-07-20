@@ -8,6 +8,8 @@ kind: ApplicationSet
 metadata:
   name: xquare-applications
   namespace: argocd
+  labels:
+    layer: applications
 spec:
   generators:
   - list:
@@ -20,6 +22,7 @@ spec:
       name: 'xquare-{{`{{ environment }}`}}'
       labels:
         environment: '{{`{{ environment }}`}}'
+        layer: environment
     spec:
       project: {{ $project }}
       destination:

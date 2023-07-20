@@ -17,6 +17,7 @@ spec:
         project: '{{`{{ config.name }}`}}'
         type: '{{`{{ config.type }}`}}'
         environment: '{{`{{ config.environment }}`}}'
+        layer: server
     spec:
       project: {{ .Values.spec.project }}
       destination:
