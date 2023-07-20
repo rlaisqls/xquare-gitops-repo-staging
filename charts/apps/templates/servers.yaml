@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: {{ .Values.spec.project }}-servers
+  namespace: argocd
 spec:
   generators:
   - git:
@@ -15,7 +16,7 @@ spec:
     spec:
       destination:
         server: {{ .Values.spec.destination.server }}
-        namespace: argocd
+        namespace: xquare
       project: {{ .Values.spec.project }}
       source:
         path: {{ .Values.spec.source.path }}
