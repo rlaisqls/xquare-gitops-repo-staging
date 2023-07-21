@@ -37,5 +37,3 @@ spec:
             prefix: '{{`{{ config.prefix }}`}}'
             environment: '{{`{{ config.environment }}`}}'
             type: '{{`{{ config.type }}`}}'
-      imagePullSecret:
-        - name: ecr-credentials
